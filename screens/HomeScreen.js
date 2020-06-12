@@ -13,7 +13,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { MonoText } from "../components/StyledText";
 
 fetch(
-  "https://covid-19-data.p.rapidapi.com/report/country/name?date-format=YYYY-MM-DD&format=json&date=2020-04-01&name=Mexico",
+  "https://covid-19-data.p.rapidapi.com/report/country/name?date-format=YYYY-MM-DD&format=json&date=2020-05-11&name=Mexico",
   {
     method: "GET",
     headers: {
@@ -25,10 +25,11 @@ fetch(
   .then((response) => response.json())
   .then((responseJson) => {
     console.log(responseJson[0].provinces[0].confirmed);
-    document.getElementById("hola").innerHTML =
-      "Pais: " + responseJson[0].country;
-    document.getElementById("hola2").innerHTML =
-      "Confirmados: " + responseJson[0].provinces[0].confirmed;
+    document.getElementById("hola").innerHTML = responseJson[0].country;
+    document.getElementById("Confirmados").innerHTML =
+      responseJson[0].provinces[0].confirmed;
+    document.getElementById("Muertes").innerHTML =
+      responseJson[0].provinces[0].deaths;
   })
   .catch((error) => {
     console.error(error);
@@ -64,10 +65,19 @@ export default function HomeScreen() {
           >
             <MonoText>screens/HomeScreen.js</MonoText>
           </View>
+          <Text style={styles.getStartedText} id="hola3">
+            Pais:
+          </Text>
+
           <Text style={styles.getStartedText} id="hola"></Text>
         </View>
         <View>
-          <Text style={styles.getStartedText} id="hola2"></Text>
+          <Text style={styles.getStartedText}>Contagiados:</Text>
+          <Text style={styles.getStartedText} id="Confirmados"></Text>
+        </View>
+        <View>
+          <Text style={styles.getStartedText}>Defunciones:</Text>
+          <Text style={styles.getStartedText} id="Muertes"></Text>
         </View>
       </ScrollView>
     </View>
