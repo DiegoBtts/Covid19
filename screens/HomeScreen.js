@@ -35,7 +35,7 @@ fetch(
   .then((response) => response.json())
   .then((responseJson) => {
     console.log(
-      f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + (f.getDate() - 5)
+      f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + (f.getDate() - 1)
     );
     console.log(responseJson[0].provinces[0].confirmed);
     document.getElementById("pais").innerHTML = responseJson[0].country;
@@ -112,7 +112,7 @@ function DevelopmentModeNotice() {
     return (
       <Text style={styles.developmentModeText}>
         Esta es una aplicacion para visualizar la informacion acerca de la
-        pandemia Covid-19.
+        pandemia Covid-19 en Mexico.
       </Text>
     );
   } else {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   developmentModeText: {
     marginBottom: 20,
-    color: "rgba(0,0,0,0.4)",
+    color: "black",
     fontSize: 14,
     lineHeight: 19,
     textAlign: "center",
