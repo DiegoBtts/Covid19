@@ -1,5 +1,9 @@
 import * as WebBrowser from "expo-web-browser";
 import * as React from "react";
+var f = new Date();
+console.log(
+  f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + (f.getDate() - 1)
+);
 import {
   Image,
   Platform,
@@ -13,7 +17,13 @@ import { ScrollView } from "react-native-gesture-handler";
 import { MonoText } from "../components/StyledText";
 
 fetch(
-  "https://covid-19-data.p.rapidapi.com/report/country/name?date-format=YYYY-MM-DD&format=json&date=2020-05-11&name=Mexico",
+  "https://covid-19-data.p.rapidapi.com/report/country/name?date-format=YYYY-MM-DD&format=json&date=" +
+    f.getFullYear() +
+    "-" +
+    (f.getMonth() + 1) +
+    "-" +
+    (f.getDate() - 1) +
+    "&name=Mexico",
   {
     method: "GET",
     headers: {
@@ -24,12 +34,17 @@ fetch(
 )
   .then((response) => response.json())
   .then((responseJson) => {
+    console.log(
+      f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + (f.getDate() - 5)
+    );
     console.log(responseJson[0].provinces[0].confirmed);
     document.getElementById("hola").innerHTML = responseJson[0].country;
     document.getElementById("Confirmados").innerHTML =
       responseJson[0].provinces[0].confirmed;
     document.getElementById("Muertes").innerHTML =
       responseJson[0].provinces[0].deaths;
+    document.getElementById("fecha").innerHTML =
+      f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + (f.getDate() - 1);
   })
   .catch((error) => {
     console.error(error);
@@ -56,15 +71,11 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          <Text style={styles.getStartedText}>
-            Open up the code for this screen:
+          <Text style={styles.getStartedText}>Fecha mas actual</Text>
+          <Text style={styles.getStartedText} id="fecha">
+            date
           </Text>
 
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
-          >
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
           <Text style={styles.getStartedText} id="hola3">
             Pais:
           </Text>
@@ -98,16 +109,11 @@ function DevelopmentModeNotice() {
 
     return (
       <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
+        Esta es una aplicacion para visualizar la informacion acerca de la
+        pandemia Covid-19.
       </Text>
     );
   } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
   }
 }
 
