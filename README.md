@@ -1,4 +1,7 @@
 # Covid19
+Para poder ejecutar la app escribir el comando:
+- npm install
+
 To run your project, navigate to the directory and run one of the following npm commands.
 
 - cd rn-expo
