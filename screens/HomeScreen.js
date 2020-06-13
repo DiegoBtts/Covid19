@@ -38,11 +38,13 @@ fetch(
       f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + (f.getDate() - 5)
     );
     console.log(responseJson[0].provinces[0].confirmed);
-    document.getElementById("hola").innerHTML = responseJson[0].country;
+    document.getElementById("pais").innerHTML = responseJson[0].country;
     document.getElementById("Confirmados").innerHTML =
       responseJson[0].provinces[0].confirmed;
     document.getElementById("Muertes").innerHTML =
       responseJson[0].provinces[0].deaths;
+    document.getElementById("recuperados").innerHTML =
+      responseJson[0].provinces[0].recovered;
     document.getElementById("fecha").innerHTML =
       f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + (f.getDate() - 1);
   })
@@ -71,24 +73,24 @@ export default function HomeScreen() {
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
-          <Text style={styles.getStartedText}>Fecha mas actual</Text>
+          <Text style={styles.textTitle}>Fecha mas actual:</Text>
           <Text style={styles.getStartedText} id="fecha">
             date
           </Text>
 
-          <Text style={styles.getStartedText} id="hola3">
-            Pais:
-          </Text>
+          <Text style={styles.textTitle}>Pais:</Text>
 
-          <Text style={styles.getStartedText} id="hola"></Text>
+          <Text style={styles.getStartedText} id="pais"></Text>
         </View>
         <View>
-          <Text style={styles.getStartedText}>Contagiados:</Text>
+          <Text style={styles.textTitle}>Contagiados:</Text>
           <Text style={styles.getStartedText} id="Confirmados"></Text>
         </View>
         <View>
-          <Text style={styles.getStartedText}>Defunciones:</Text>
+          <Text style={styles.textTitle}>Defunciones:</Text>
           <Text style={styles.getStartedText} id="Muertes"></Text>
+          <Text style={styles.textTitle}>Recuperados:</Text>
+          <Text style={styles.getStartedText} id="recuperados"></Text>
         </View>
       </ScrollView>
     </View>
@@ -215,5 +217,12 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7",
+  },
+  textTitle: {
+    fontSize: 19,
+    color: "black",
+    fontWeight: "bold",
+    lineHeight: 24,
+    textAlign: "center",
   },
 });
