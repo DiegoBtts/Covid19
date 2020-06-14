@@ -1,12 +1,10 @@
 {
   "expo": {
-    "name": "rn-expo",
-    "slug": "rn-expo",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "name": "masNuevo",
+    "slug": "masNuevo",
+    "sdkVersion": "37.0.0",
+    "privacy": "public",
+    "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -19,14 +17,14 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
+    "description": "",
+    "android": {
+      "package": "com.yourcompany.yourappname",
+      "versionCode": 1
     }
   }
 }
